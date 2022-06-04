@@ -1,0 +1,164 @@
+{% extends 'my_app/header.html' %}
+{% block content %}
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <h2>Request a Pickup</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li>Request a Pickup</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Request A Pickup Top Start-->
+        <section class="request-a-pickup-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Request A Pickup Top End-->
+
+        <!--Request A Pickup Start-->
+       
+                        <!--tab-->
+                        <div class="tab active-tab" id="containers">
+                            <div class="request-a-pickup__tab-content">
+                                <div class="request-a-pickup__tab-content-size-box">
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="request-a-pickup__tab-content-form-left">
+                                            <form class="form" method="POST" action="{% url "request_pickup" %}" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {% if s_msg %}
+                                                <div class="alert alert-primary" role="alert">
+                                                    {{s_msg}}
+                                                  </div>
+                                                {% endif %}
+                                                {% if e_msg %}
+                                                <div class="alert alert-secondary" role="alert">
+                                                  {{e_msg}}
+                                                </div>
+                                                {% endif %}
+                                                    {% comment %} <div class="row">
+                                                        <div class="request-a-pickup__tab-content-input-box">
+                                                            <select class="selectpicker" name="role"
+                                                                aria-label="Default select example">
+                                                                <option selected>Type</option>
+                                                                <option value="local user">local user</option>
+                                         Both                       <option value="Hotel">Hotel</option>
+                                                            </select>
+                                                        </div> {% endcomment %}
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <select class="selectpicker" name="food_category" required
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Select Food type</option>
+                                                                    <option value="Veg">Veg</option>
+                                                                    <option value="Non-Veg">Non-Veg</option>
+                                                                    <option value="Both">Both</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" class="form-control" placeholder="Food description" name="food_description" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-12">
+                                                       
+                                                        </div>
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" placeholder="pick_up_address"
+                                                                    name="pick_up_address" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" placeholder="pick_up_location"
+                                                                    name="pick_up_location" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="request-a-pickup__tab-content-extra">
+                                                            
+                                                        </div>
+                                                        {% comment %} <div class="col-xl-12"> {% endcomment %}
+                                                            {% comment %} <div
+                                                                class="request-a-pickup__tab-content-input-box request-a-pickup__tab-content-message-box">
+                                                                <textarea placeholder="food_description"
+                                                                    name="food_description" required></textarea>
+                                                            </div> {% endcomment %}
+                                                           
+                                                        {% comment %} </div> {% endcomment %}
+                                                            
+                                                    </div>
+                                                {% comment %} </form> {% endcomment %}
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="request-a-pickup__tab-content-form-right">
+                                                <form class="request-a-pickup__tab-content-form-two">
+                                                    <div class="row">
+                                                        {% comment %} <div class="col-xl-12">
+                                                            <div
+                                                                class="request-a-pickup__tab-content-input-box request-a-pickup__tab-content-brief-box">
+                                                                <textarea
+                                                                    placeholder="Brief description of waste to be removed"
+                                                                    name="food_category" required></textarea>
+                                                            </div>
+                                                        </div> {% endcomment %}
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" placeholder="food_donor_purpose"
+                                                                    name="food_donor_purpose" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" placeholder="pick_up_time" name="pick_up_time" required>
+                                                            </div>
+                                                        </div>
+                                                        {% comment %} <div class="col-xl-12">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="text" placeholder="food_status" name="food_status" required>
+                                                            </div> {% endcomment %}
+                                                        </div>
+                                                        <div class="col-xl-6">
+                                                            <div class="request-a-pickup__tab-content-input-box">
+                                                                <input type="file" 
+                                                                    name="picture" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="request-a-pickup__tab-content-btn-box">
+                                                            <input type="submit"
+                                                                class="thm-btn request-a-pickup__tab-content-btn" value = "Order Now" ></input>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--tab-->
+         
+        </section>
+        <!--Request A Pickup End-->
+
+        <!--Site Footer Start-->
+{% endblock %}
+      

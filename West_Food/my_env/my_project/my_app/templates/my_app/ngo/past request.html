@@ -1,0 +1,79 @@
+﻿{% extends 'my_app/ngo/header.html' %}
+{% load static %}
+{% block content %}       
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>All <small class="text-muted">Welcome to My_Fasion</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                                                    <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                                <i class="zmdi zmdi-plus"></i>
+                            </button>
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i>My_Fasion</a></li>
+                                                            <li class="breadcrumb-item">My_Fasion</li>
+                                                                                        <li class="breadcrumb-item active">All</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+        <div class="row clearfix">        
+        {% for i in all_request %}      
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card project_widget">
+                <div class="pw_img">
+                    <img class="img-fluid" src="{{i.picture.url}}" alt="About the image">
+                </div>
+                {% if i.food_category == "Veg" %}
+                <div class="pw_img">
+                    <img class="img-fluid" src="{% static 'my_app/assets/images/veg.png' %}" alt="About the image" height="10px" width="20px">
+                </div>
+                {% endif %}
+                {% if i.food_category == "Non-Veg" %}
+                <div class="pw_img">
+                    <img class="img-fluid" src="{% static 'my_app/assets/images/non_veg.png' %}" alt="About the image" height="10px" width="20px" >
+                </div>
+                {% endif %}
+                {% if i.food_category == "Both" %}
+                <div class="pw_img">
+                    <img class="img-fluid" src="{% static 'my_app/assets/images/non_veg.png' %}" alt="About the image" height="10px" width="20px" >
+                </div>
+                <div class="pw_img">
+                    <img class="img-fluid" src="{% static 'my_app/assets/images/veg.png' %}" alt="About the image" height="10px" width="20px">
+                </div>
+                {% endif %}
+                <p>{{i.whenpublished}}</p>
+                STATUS = {{i.food_status}}
+
+                <div class="pw_content">
+
+                    {% comment %} <h6>{{i.food_quality}}</h6> {% endcomment %}
+                    <div class="pw_header">
+                    <h6>{{i.food_quality}}</h6>
+                        <h6>Gastrology</h6>
+                        <p>Food description::{{i.food_description}}</p>
+                        <p>Food Category::{{i.food_category}}</p>
+                        <p>Pick up location{{i.pick_up_location}}</p>
+                        <p>Food Donor Purpose{{i.food_donor_purpose}}</p>
+                        <p>Pick up time{{i.pick_up_time}}</p>
+                        <p>Pick up address{{i.pick_up_address}}</p>
+                    </div>
+                        {% comment %} <h4>Request Sender : {{i.}} </h4> {% endcomment %}
+                        <button class="btn btn-primary btn-simple btn-round">More</button>
+                    </div>
+                </div><span class="btn-file">
+												
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+            </div>
+</section>
+{% endblock %}              

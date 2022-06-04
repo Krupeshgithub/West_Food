@@ -1,0 +1,72 @@
+﻿{% extends 'my_app/ngo/header.html' %}
+{% block content %}   
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>All NGOS <small class="text-muted">Welcome to My_Fasion</small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                        
+                                                    <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                                <i class="zmdi zmdi-plus"></i>
+                            </button>
+                        
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i>My_Fasion</a></li>
+                                                            <li class="breadcrumb-item">NGOS</li>
+                                                                                        <li class="breadcrumb-item active">All NGOS</li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">                
+                
+ 
+            <div class="tab-content m-t-10">
+                <div class="tab-pane active" id="Permanent">
+                    <div class="row clearfix">
+                        {% for i in all_ngo %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            
+                        {% comment %} {% endfor %} {% endcomment %}
+                            <div class="card xl-blue member-card doctor">
+                                <div class="body">
+                                    <div class="member-thumb">
+                                        <img src="{{i.logo.url}}" class="img-fluid" alt="profile-image">                               
+                                    </div>
+                                    <div class="detail">
+                                        <h4 class="m-b-0">{{i.name}}</h4>
+                                        <p class="text-muted">{{i.user_id.email}}</p>
+                                       
+                                        <p class="text-muted">{{i.contact_person_number}}</p>                           
+                                        <a href="{% url 'specific_ngo_profile' pk=i.id %}" class="btn btn-default btn-round btn-simple">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+</section>
+                <!-- Scripts -->
+                <script src="..\assets\bundles\libscripts.bundle.js"></script>    
+        <script src="..\assets\bundles\vendorscripts.bundle.js"></script>
+
+        <script src="..\assets\bundles\mainscripts.bundle.js"></script>
+                		<!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/59f5afbbbb0c3f433d4c5c4c/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    </body>
+</html>
+{% endblock %}
